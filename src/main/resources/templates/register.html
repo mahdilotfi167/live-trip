@@ -6,13 +6,19 @@
 
 <body>
     <div class="container">
-        <form th:action="@{/user/login}" class="form col-8 offset-2 col-sm-6 offset-sm-3 row justify-content-center"
+        <form th:action="@{/user/signup}" class="form col-8 offset-2 col-sm-6 offset-sm-3 row justify-content-center"
             method="post">
             <label for="username">Username : </label>
             <input type="text" class="form-control" name="username" placeholder="Username">
-            <label for="password">password : </label>
+            <label for="fullname">Full name : </label>
+            <input type="text" class="form-control" name="fullname" placeholder="Full name">
+            <label for="password">Password : </label>
             <input type="password" class="form-control" name="password" placeholder="Password">
+            <label for="phone">Phone : </label>
+            <input type="text" class="form-control" name="phone" placeholder="Phone">
             <input type="submit" value="Sign in" class="btn btn-warning mt-4">
         </form>
     </div>
 </body>
+
+</html>

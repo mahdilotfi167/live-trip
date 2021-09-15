@@ -1,7 +1,7 @@
 package co.live.trip.model;
 
 import java.util.Collection;
-import java.util.Set;
+import java.util.HashSet;
 
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -35,10 +35,17 @@ public class User implements UserDetails {
     @Column
     @Enumerated(EnumType.ORDINAL) // ! Be careful
     @ElementCollection(fetch = FetchType.EAGER)
-    private Set<Role> roles;
+    private Collection<Role> authorities;
 
     public User() {
         // ? use for entity initializing by hibernate
+    }
+
+    public User(String name, String username, String password, String phone) {
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
     }
 
     public int getId() {
@@ -81,17 +88,13 @@ public class User implements UserDetails {
         this.credit = credit;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setAuthorities(Collection<Role> authorities) {
+        this.authorities = authorities;
     }
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.roles;
+    public Collection<Role> getAuthorities() {
+        return this.authorities;
     }
 
     @Override
