@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import co.live.trip.model.User;
 
 @Controller
-public class MainController {
+public class MainController extends BaseController {
     @GetMapping("/")
-    public String index(@AuthenticationPrincipal User user) {
-        if (user != null)
+    public String index() {
+        if (isAuthenticated())
             return "redirect:/dashboard";
         return "index";
     }
