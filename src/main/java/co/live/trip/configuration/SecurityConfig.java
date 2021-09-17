@@ -1,4 +1,4 @@
-package co.live.trip.security;
+package co.live.trip.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/", "/css/**").permitAll().anyRequest().authenticated();
         http.formLogin().loginPage("/user/login").permitAll();
         http.logout().permitAll();
+        http.httpBasic();
     }
 
     @Override

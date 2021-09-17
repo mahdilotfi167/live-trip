@@ -92,6 +92,18 @@ public class User implements UserDetails {
         this.authorities = authorities;
     }
 
+    public boolean hasRole(Role role) {
+        return this.authorities.contains(role);
+    }
+
+    public boolean hasRole(String roleName) {
+        return this.hasRole(Role.valueOf(roleName));
+    }
+
+    public boolean hasRole(int roleIndex) {
+        return this.hasRole(Role.values()[roleIndex]);
+    }
+
     @Override
     public Collection<Role> getAuthorities() {
         return this.authorities;

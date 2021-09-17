@@ -6,16 +6,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.springframework.security.access.prepost.PreAuthorize;
+
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.METHOD, ElementType.TYPE })
+@PreAuthorize("hasRole(T(co.live.trip.model.Role).DRIVER)")
 public @interface DriverAuthorization {
 
 }
-
-// @Target({ ElementType.METHOD, ElementType.TYPE })
-// @Retention(RetentionPolicy.RUNTIME)
-// @Inherited
-// @PreAuthorize("hasRole(T(<package name>.Role).ROLE_ADMIN)")
-// public @interface AdminAuthorization {
-// }
